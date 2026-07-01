@@ -1,0 +1,19 @@
+engram
+Copyright (c) 2026 Archive228
+
+This project includes patterns and file shapes adapted from:
+
+  - thedotmack/claude-mem (Apache-2.0)
+    https://github.com/thedotmack/claude-mem
+    Adapted: install script pattern, hooks.json shape, settings.json shape.
+    Bodies rewritten in bash; Bun worker not included.
+    Full Apache-2.0 text: LICENSES/claude-mem-Apache-2.0.txt
+
+  - modelcontextprotocol/servers/src/memory (MIT)
+    https://github.com/modelcontextprotocol/servers
+    Adapted: entity+relation graph engine concept for the recall-graph skill.
+    Full MIT text: LICENSES/mcp-memory-MIT.txt
+
+  - anthropics/skills (source-available, mixed licensing)
+    https://github.com/anthropics/skills
+    Referenced: managed-agents-memory mental model (concept, not code).
