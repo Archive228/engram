@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# engram installer — Copyright (c) 2026 Archive228 MIT.
+# memory installer — Copyright (c) 2026 Archive228 MIT.
 # Install pattern adapted from thedotmack/claude-mem (Apache-2.0).
 set -euo pipefail
 
-REPO_TARBALL="https://codeload.github.com/Archive228/engram/tar.gz/refs/heads/main"
+REPO_TARBALL="https://codeload.github.com/Archive228/memory/tar.gz/refs/heads/main"
 FORCE="${FORCE:-0}"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 
-say() { printf '[engram] %s\n' "$*"; }
-die() { printf '[engram] error: %s\n' "$*" >&2; exit 1; }
+say() { printf '[memory] %s\n' "$*"; }
+die() { printf '[memory] error: %s\n' "$*" >&2; exit 1; }
 
 # Preflight: required tools.
 command -v curl >/dev/null 2>&1 || die "curl is required"
@@ -22,15 +22,15 @@ if [ -d ".claude" ] && [ "$FORCE" != "1" ]; then
 fi
 
 # Fetch tarball into a temp dir.
-TMPDIR="$(mktemp -d 2>/dev/null || mktemp -d -t engram)"
+TMPDIR="$(mktemp -d 2>/dev/null || mktemp -d -t memory)"
 trap 'rm -rf "$TMPDIR"' EXIT
 
-say "downloading engram main tarball"
-curl -fsSL "$REPO_TARBALL" -o "$TMPDIR/engram.tar.gz" || die "download failed"
+say "downloading memory main tarball"
+curl -fsSL "$REPO_TARBALL" -o "$TMPDIR/memory.tar.gz" || die "download failed"
 
 say "extracting"
-tar -xzf "$TMPDIR/engram.tar.gz" -C "$TMPDIR"
-SRC="$(find "$TMPDIR" -maxdepth 1 -type d -name 'engram-*' | head -n1)"
+tar -xzf "$TMPDIR/memory.tar.gz" -C "$TMPDIR"
+SRC="$(find "$TMPDIR" -maxdepth 1 -type d -name 'memory-*' | head -n1)"
 [ -n "$SRC" ] || die "extracted source dir not found"
 
 # Copy MEMORY.md to project root only if absent.
